@@ -37,8 +37,39 @@ public class GameOfLife {
 
     public int neighbors(int row, int col){
         //find the neighbors of an index in the 2D array
-        return 0;
+        int sum = 0;
+
+        for(int r = 0; r < board.length;r++){
+            for(int c = 0; c < board[r].length;c++){
+                
+            }
+        }
+        return sum;
     }
 
+    public void evolution(int n){
+        //call oneStep n times
+        oneStep();
+    }
+
+    public void printBoard(){
+        System.out.println("Current Board");
+        System.out.println();
+        for(int r = 0; r < board.length;r++){
+            for(int c = 0; c < board[0].length;c++){
+                System.out.print(board[r][c] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Previous Board");
+        System.out.println();
+        for(int r = 0; r < board.length;r++){
+            for(int c = 0; c < board[0].length;c++){
+                System.out.print(previous[r][c] + " ");
+            }
+            System.out.println();
+        }
+    }
 
 }//end class
