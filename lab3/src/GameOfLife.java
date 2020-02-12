@@ -1,24 +1,24 @@
 
 
 public class GameOfLife {
-    int sizeRow = 1;
-    int sizeCol = 1;
-    int[][] board = new int[sizeRow][sizeCol];
-    int[][] previous = new int[sizeRow][sizeCol];
+   // int sizeRow = 1;
+    //int sizeCol = 1;
+    int[][] board;
+    int[][] previous;
 
     GameOfLife(){
-        sizeRow = 1;
-        sizeCol = 1;
+        board = new int[3][3];
+        previous = new int[3][3];
     }
 
     GameOfLife(int inputSize){
-        sizeRow = inputSize;
-        sizeCol = inputSize;
+        board = new int[inputSize][inputSize];
+        previous = new int[inputSize][inputSize];
     }
 
     GameOfLife(int[][] loadBoard){
-        sizeRow = loadBoard.length;
-        sizeCol = loadBoard[0].length;
+        board = new int[loadBoard.length][loadBoard[0].length];
+        previous = new int[loadBoard.length][loadBoard[0].length];
 
         for(int r = 0; r < loadBoard.length; r++){
             for(int c = 0; c < loadBoard[r].length; c++){
@@ -31,6 +31,8 @@ public class GameOfLife {
                 previous[r][c] = loadBoard[r][c];
             }
         }
+
+        printCBoard();
     }
 
     public int[][] getBoard(){
@@ -53,17 +55,20 @@ public class GameOfLife {
 
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[r].length; c++){
-                if(board[r][c] < 2){
+                if(board[r][c] < 2 && board[r][c] > 0){
                     board[r][c] = 0;
                     break;
                 }
                 if(board[r][c] == 2 || board[r][c] == 3){
                     board[r][c] = 1;
-                    
+                    break;
+                }
+                if(board[r][c] > 3){
+                    board[r][c] = 0;
                 }
             }
-        }
-
+        }//outside loop
+            printBoard();
     }
 
     public int neighbors(int row, int col){
@@ -71,17 +76,17 @@ public class GameOfLife {
         int sum = 0;
         boolean[] valueExists = new boolean[4];
 
-        if(row - 1 > 0){
-            valueExists[0] = true;
+        if((row - 1 >= 0) && (row - 1 < board.length)){
+            valueExists[0] = true; //top col
         }
-        if(row + 1 > 0){
-            valueExists[1] = true;
+        if((row + 1 >= 0) && (row + 1 < board.length)){
+            valueExists[1] = true;//bot col
         }
-        if(col - 1 > 0){
-            valueExists[2] = true;
+        if((col - 1 >= 0) && (col - 1 < board.length)){
+            valueExists[2] = true;//left col
         }
-        if(col + 1 > 0){
-            valueExists[3] = true;
+        if((col + 1 >= 0) && (col + 1 < board.length)){
+            valueExists[3] = true;// right col
         }
 
 
@@ -149,6 +154,28 @@ public class GameOfLife {
         for(int r = 0; r < board.length;r++){
             for(int c = 0; c < board[0].length;c++){
                 System.out.print(previous[r][c] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void printPboard(){
+        System.out.println("Previous Board");
+        System.out.println();
+        for(int r = 0; r < board.length;r++){
+            for(int c = 0; c < board[0].length;c++){
+                System.out.print(previous[r][c] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void printCBoard(){
+        System.out.println("Current Board");
+        System.out.println();
+        for(int r = 0; r < board.length;r++){
+            for(int c = 0; c < board[0].length;c++){
+                System.out.print(board[r][c] + " ");
             }
             System.out.println();
         }
