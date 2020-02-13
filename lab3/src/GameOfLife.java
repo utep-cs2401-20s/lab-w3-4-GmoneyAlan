@@ -69,7 +69,6 @@ public class GameOfLife {
                 if((previous[r][c] == 0) && board[r][c] == 1){
                     board[r][c] = 0;
                 }
-
             }
         }//outside loop
         transformB();
