@@ -21,9 +21,7 @@ public class Main {
         //g = new GameOfLife(a);
 
         //g.evolution(4);
-        int e = Math.abs(3) % 3;
-        int jh = Math.floorMod(-1,3);
-        System.out.println(jh + " " + e);
+
         p.evolution(5);
     }
 }

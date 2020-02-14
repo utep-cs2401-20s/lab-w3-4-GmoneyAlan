@@ -60,10 +60,10 @@ public class TorusGameOfLife extends GameOfLife {
         col = colI;
         row = rowI;
         if(row + 1 > board.length - 1){
-            row = (Math.floorMod(row,board.length));
+            row = (Math.floorMod(row + 1,board.length) - 1);
         }
         //bot row
-        if ((row + 1 >= 0) && (row + 1 < board[row].length)) {
+        if ((row + 1 >= 0) && (row + 1 < board[row + 1].length)) {
             if(col - 1 < 0){
                 col = (Math.floorMod(col - 1, board[row + 1].length)) + 1;
             }
