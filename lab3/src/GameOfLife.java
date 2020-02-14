@@ -57,7 +57,9 @@ public class GameOfLife {
                 if (previous[r][c] == 1) {
                     board[r][c] = 0;
 
-                } else if (previous[r][c] == 2 || previous[r][c] == 3) {
+                } else if(previous[r][c] == 2 && board[r][c] == 0){
+                    board[r][c] = 0;
+                }else if (previous[r][c] == 2 || previous[r][c] == 3) {
                     board[r][c] = 1;
 
                 } else if (previous[r][c] > 3 && board[r][c] == 0){
@@ -124,7 +126,7 @@ public class GameOfLife {
         for (int i = 0; i < n - 1; i++) {
             oneStep();
             printPboard();
-            //printCBoard();
+            printCBoard();
         }
     }
 

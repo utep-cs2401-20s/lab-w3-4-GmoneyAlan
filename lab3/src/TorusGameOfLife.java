@@ -10,10 +10,7 @@ public class TorusGameOfLife extends GameOfLife {
         int sum = 0;
         int rowI = row;
         int colI = col;
-        //use modulus
-        /*
-            row (+1 or -1 or +0) % (7)
-         */
+
         if(row - 1 < 0){
             row = (Math.floorMod((row - 1), board.length)) + 1;
         }
@@ -72,15 +69,20 @@ public class TorusGameOfLife extends GameOfLife {
                     sum++;//left column bot row
             col = colI;
             if(col + 1 > board.length - 1){
-                col = ((col)% board.length - 1);
+                col = (Math.floorMod(col + 1, board.length));
+            }
+            else{
+                col++;
             }
             if (col + 1 < board.length)
-                if (board[row + 1][col + 1] == 1)
+                if (board[row + 1][col] == 1)
                     sum++;//right Column bot row
+            col = colI;
             if (board[row + 1][col] == 1) {
                 sum++;
             }// middle column bot row
         }//row below value
+
         return sum;
     }
 }
