@@ -2,15 +2,28 @@
 public class Main {
     public static void main(String[] args) {
         GameOfLife g;
+        GameOfLife p;
 
-        int[][] a = {
+        int[][] q = {
                 {1,1,1},
                 {1,1,1},
                 {1,1,1}
         };
-        g = new GameOfLife(a);
+        p = new TorusGameOfLife(q);
 
-        g.evolution(3);
-        g.printCBoard();
+        int[][] a = {
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {0,1,1,1,0},
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+        };
+        //g = new GameOfLife(a);
+
+        //g.evolution(4);
+        int e = Math.abs(3) % 3;
+        int jh = Math.floorMod(-1,3);
+        System.out.println(jh + " " + e);
+        p.evolution(5);
     }
 }

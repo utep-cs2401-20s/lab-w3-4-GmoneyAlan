@@ -31,7 +31,7 @@ public class GameOfLife {
             }
         }
         printCBoard();
-        System.out.println();
+        System.out.println("this is it\n");
     }
 
     public int[][] getBoard() {
@@ -71,17 +71,6 @@ public class GameOfLife {
                 }
             }
         }//outside loop
-        transformB();
-    }
-
-    public void transformB() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] > 0) {
-                    board[i][j] = 1;
-                }
-            }
-        }
     }
 
     public int neighbors(int row, int col) {
@@ -132,10 +121,10 @@ public class GameOfLife {
 
     public void evolution(int n) {
         //call oneStep n times
-        for (int i = 0; i < n; i++) {
-            printCBoard();
+        for (int i = 0; i < n - 1; i++) {
             oneStep();
             printPboard();
+            //printCBoard();
         }
     }
 
