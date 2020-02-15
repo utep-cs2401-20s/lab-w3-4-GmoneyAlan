@@ -30,8 +30,6 @@ public class GameOfLife {
                 previous[r][c] = loadBoard[r][c];
             }
         }
-        printCBoard();
-        System.out.println("this is it\n");
     }
 
     public int[][] getBoard() {
@@ -59,10 +57,10 @@ public class GameOfLife {
 
                 } else if(previous[r][c] == 2 && board[r][c] == 0){
                     board[r][c] = 0;
-                }else if (previous[r][c] == 2 || previous[r][c] == 3) {
+                } else if ((previous[r][c] == 2 || previous[r][c] == 3) && (board[r][c] == 1)) {
                     board[r][c] = 1;
 
-                } else if (previous[r][c] > 3 && board[r][c] == 0){
+                } else if (previous[r][c] == 3 && board[r][c] == 0){
                     board[r][c] = 1;
                 }
                 else if (previous[r][c] > 3) {
@@ -125,8 +123,6 @@ public class GameOfLife {
         //call oneStep n times
         for (int i = 0; i < n - 1; i++) {
             oneStep();
-            printPboard();
-            printCBoard();
         }
     }
 
